@@ -1,0 +1,40 @@
+﻿@model CuaHangVatLieuXayDung.Models.GIOHANG
+
+@{
+    ViewBag.Title = "ThemGioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/StyleSheetThemGioHang.css" rel="stylesheet " type="text/css" />
+}
+
+<h2>THÊM VÀO GIỎ HÀNG</h2>
+
+@using (Html.BeginForm("ThemGioHang", "GioHang", FormMethod.Post, new { @id = "formDH" }))
+{
+    string a = "\"" + @Html.DisplayFor(model => Model.ANH) + "\"";
+    <div style="display:none">
+        @Html.EditorFor(model => model.ANH, new { htmlAttributes = new { @class = "form-control" }, @id = "ANH" })
+        @Html.EditorFor(model => model.MASP, new { htmlAttributes = new { @class = "form-control" }, @id = "TEN" })
+        @Html.EditorFor(model => model.TENSP, new { htmlAttributes = new { @class = "form-control" }, @id = "TEN" })
+        @Html.EditorFor(model => model.DONVITINH, new { htmlAttributes = new { @class = "form-control" }, @id = "DVT" })
+        @Html.EditorFor(model => model.DONGIA, new { htmlAttributes = new { @class = "form-control" }, @id = "DONGIA" })
+    </div>
+    <div id="CaiNayLaKhungChua">
+        <div id="ChoNayLaHinh" style="width:30%; height: 250px; background-image:url(@a)"></div>
+        <div id="DayLaTenSanPham">
+            <span><input type="text" value="@Model.TENSP" disabled /></span>
+        </div>
+        <div id="DayLaDonViTinh">
+            <span><input type="text" value="@Model.DONVITINH" disabled /></span>
+        </div>
+        <div id="DayLaGia">
+            <span><input type="text" value="@Model.DONGIA" disabled /></span>
+        </div>
+        <div id="ChoNayLaSoLuong">
+            <span onchange="CapNhatLaiThanhTien">Số lượng: </span>@Html.TextBoxFor(m => m.SOLUONG, new { @id = "NhapSoLuong" })
+        </div>
+        <div id="DayLaThanhTien">
+            <span><input type="text" value="@Model.THANHTIEN" disabled /></span>
+        </div>
+    </div>
+    <input type="submit" name="submit" id="ChinhNutChoNayNha" value="Thêm vào giỏ hàng" />
+}

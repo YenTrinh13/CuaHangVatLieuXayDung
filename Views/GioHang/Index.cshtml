@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CuaHangVatLieuXayDung.Models.GIOHANG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/giohangcss.css" rel="stylesheet" type="text/css" />
+}
+
+<h2 style="margin:10px 400px;font-family:Arial;font-size:30px">Giỏ hàng của bạn</h2>
+
+@foreach (var item in Model)
+{
+    string a = "\"" + @Html.DisplayFor(modelItem => item.ANH) + "\"";
+    string b = "" + @Html.DisplayFor(modelItem => item.MASP);
+    <div id="khungchua">
+        <div class="col-1">
+            <div class="Khunganh" style="background-image:url(@a);border-radius:15%"></div>
+        </div>
+        <div class="col-2">
+            <div class="Khungten" style="font-weight:bold;font-size:28px">
+                <span class="Ten"> @Html.DisplayFor(modelItem => item.TENSP)</span>
+            </div>
+            <div class="Khungdvt">Đơn vị tính: @Html.DisplayFor(modelItem => item.DONVITINH) </div>
+            <div class="Khungdongia">Giá: @Html.DisplayFor(modelItem => item.DONGIA)</div>
+            <div class="Khungsl">Số lượng: @Html.DisplayFor(modelItem => item.SOLUONG)</div>
+            <div class="Khungtt"><span style="font-weight:bold">Tổng cộng:</span> @Html.DisplayFor(modelItem => item.THANHTIEN)vnđ</div>
+        </div>
+        
+    </div>
+}
